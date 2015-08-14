@@ -1,0 +1,44 @@
+# Water = W
+# Coffee = C
+# Powder = P
+# Grounds = F
+# Tray = Tray
+# W & ( C || P ) && !(G || T) = Go
+# Start 
+# Ready
+# Resupply
+# Service
+# ServiceResupply
+digraph coffee_machine
+{
+rankdir = "TB"
+
+# Start -> Resupply [ label = "init [ missing_supplies() ] /\n resupply_msg()" ]
+# Start -> Ready [ label = "init " ]
+# Ready -> Brew [ label = "brew_button /\n brew_coffee() " ]
+# Brew -> Resupply [ label = "complete [ missing_supplies() ] /\n resupply_msg()" ]
+# Brew -> Ready [ label = "complete" ]
+# Resupply -> Resupply [ label = "supplies_added [ missing_supplies() ]" ]
+# Resupply -> Ready [ label = "supplies_added" ]
+
+Start -> Empty [ label="init/\nmissing_all_msg()" ]
+Empty -> HasCoffee [ label="detect_coffee/\nmissing_water_msg()" ]
+Empty -> HasWater [ label="detect_water/\nmissing_coffee_msg()" ]
+HasCoffee -> Ready [ label="detect_water/\nready_msg()" ]
+HasWater -> Ready [ label="detect_coffee/\nready_msg()" ]
+Ready -> Brewing [ label="brew_pressed" ]
+Brewing -> Ready [ label="complete" ]
+Ready -> HasCoffee [ label="missing_water/\nmissing_water_msg()" ]
+Ready -> HasWater [ label="missing_coffee/\nmissing_coffee_msg()" ]
+HasWater -> Empty [ label="missing_coffee/\nmissing_all_msg()" ]
+HasCoffee -> Empty [ label="missing_water/\nmissing_all_msg()" ]
+
+}
+
+
+
+
+
+
+
+

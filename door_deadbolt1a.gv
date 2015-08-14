@@ -1,0 +1,18 @@
+digraph light_switch
+{
+    rankdir="TB"
+    margin="0.1"
+    labelloc="t"
+    label="Door with Deadbolt 1A"
+    fontsize="24"
+    
+    OPEN_LOCKED -> OPEN_UNLOCKED [ label=" unlock " ]
+    OPEN_UNLOCKED -> OPEN_LOCKED [ label=" lock " ]
+
+    CLOSED_LOCKED-> CLOSED_UNLOCKED [ label=" unlock " ]
+    CLOSED_UNLOCKED -> CLOSED_LOCKED [ label=" lock " ]
+    
+    OPEN_UNLOCKED -> CLOSED_UNLOCKED [ label=" close " ]
+    CLOSED_UNLOCKED -> OPEN_UNLOCKED [ label=" open " ]
+    
+}

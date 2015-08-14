@@ -1,0 +1,10 @@
+digraph state_machine
+{
+    rankdir="LR"
+    margin="0.1"
+    label="State Machine Legend"
+    labelloc="t"
+    fontsize="24"
+    Current -> Next [ label=" event [ guard() ] / action() " ]
+
+}

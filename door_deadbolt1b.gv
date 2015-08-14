@@ -1,0 +1,35 @@
+digraph light_switch
+{
+    rankdir="TB"
+    margin="0.1"
+    labelloc="t"
+    label="Door with Deadbolt 1B"
+    fontsize="24"
+    
+    
+    OPEN_LOCKED -> OPEN_UNLOCKED [ label=" unlock " ]
+    OPEN_UNLOCKED -> OPEN_LOCKED [ label=" lock " ]
+
+    CLOSED_LOCKED-> CLOSED_UNLOCKED [ label=" unlock " ]
+    CLOSED_UNLOCKED -> CLOSED_LOCKED [ label=" lock " ]
+    
+    OPEN_UNLOCKED -> CLOSED_UNLOCKED [ label=" close " ]
+    CLOSED_UNLOCKED -> OPEN_UNLOCKED [ label=" open " ]
+
+
+
+    OPEN_LOCKED -> OPEN_LOCKED [ label=" close / beep() " ]
+    CLOSED_LOCKED -> CLOSED_LOCKED [ label=" open / beep()" ]
+
+    OPEN_LOCKED -> OPEN_LOCKED [ label=" lock / beep() " ]
+    OPEN_UNLOCKED -> OPEN_UNLOCKED [ label=" unlock / beep() " ]
+
+    CLOSED_LOCKED -> CLOSED_LOCKED [ label=" lock / beep() " ]
+    CLOSED_UNLOCKED -> CLOSED_UNLOCKED [ label=" unlock / beep() " ]
+
+    OPEN_LOCKED -> OPEN_LOCKED [ label=" open / beep() " ]
+    OPEN_UNLOCKED -> OPEN_UNLOCKED [ label=" open / beep() " ]
+
+    CLOSED_LOCKED -> CLOSED_LOCKED [ label=" close / beep() " ]
+    CLOSED_UNLOCKED -> CLOSED_UNLOCKED [ label=" close / beep() " ]
+}

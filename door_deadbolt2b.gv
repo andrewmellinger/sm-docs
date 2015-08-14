@@ -1,0 +1,24 @@
+digraph light_switch
+{
+    rankdir="LR"
+    ranksep="1.0"
+    margin="0.1"
+    labelloc="t"
+    label="Door with Deadbolt 2"
+    fontsize="24"
+    
+    OPEN -> OPEN [ label=" close [ locked() ] / beep() " ]
+    OPEN -> CLOSED [ label=" close / close() " ]
+
+    CLOSED -> CLOSED [ label=" open [ locked() ] / beep() " ]
+    CLOSED -> OPEN [ label=" open / open() " ]
+
+    OPEN -> OPEN [ label=" lock / lock() " ]
+    OPEN -> OPEN [ label=" unlock / unlock() " ]
+
+    CLOSED -> CLOSED  [ label=" lock [ locked() ] / beep() " ]
+    CLOSED -> CLOSED  [ label=" lock / lock() " ]
+    CLOSED -> CLOSED  [ label=" unlock [ locked() ] / unlock() " ]
+    CLOSED -> CLOSED  [ label=" unlock / beep() " ]
+
+}

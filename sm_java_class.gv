@@ -1,0 +1,19 @@
+digraph state_machine
+{
+    rankdir="LR"
+    margin="0.1"
+    label="Data Model"
+    labelloc="t"
+    fontsize="24"
+
+    sm    [ shape="record" label="<f0> StateMachine | <f1> states | <f2> execute(model)" ]
+    state [ shape="record" label="<f0> State | <f1> event =\> transition " ]
+    trans [ shape="record" label="Transition | guard | action | nextState " ]
+    
+    sm:f1 -> state
+    state:f1 -> trans
+    
+    model [ shape="record" label="Model | getState() | setState()" ]
+    
+    sm:f2 -> model [ style="dashed" ]
+}
